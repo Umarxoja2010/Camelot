@@ -13,7 +13,6 @@ class Course extends Model
     use HasFactory, HasTranslations;
 
     public const TYPE_LANGUAGE = 'language';
-    public const TYPE_SCHOOL = 'school';
 
     public array $translatable = ['name', 'description'];
 

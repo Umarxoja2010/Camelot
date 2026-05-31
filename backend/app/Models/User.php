@@ -17,13 +17,11 @@ class User extends Authenticatable
     public const ROLE_ADMIN = 'admin';
     public const ROLE_TEACHER = 'teacher';
     public const ROLE_STUDENT = 'student';
-    public const ROLE_PARENT = 'parent';
 
     public const ROLES = [
         self::ROLE_ADMIN,
         self::ROLE_TEACHER,
         self::ROLE_STUDENT,
-        self::ROLE_PARENT,
     ];
 
     protected $fillable = [
@@ -74,11 +72,6 @@ class User extends Authenticatable
         return $this->role === self::ROLE_STUDENT;
     }
 
-    public function isParent(): bool
-    {
-        return $this->role === self::ROLE_PARENT;
-    }
-
     /* ===================== Bog'lanishlar ===================== */
 
     /** O'qituvchi sifatida olib boradigan guruhlar */
@@ -92,20 +85,6 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Group::class, 'enrollments', 'student_id', 'group_id')
             ->withPivot('status', 'enrolled_at')
-            ->withTimestamps();
-    }
-
-    /** Ota-onaning farzandlari */
-    public function children(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'parent_student', 'parent_id', 'student_id')
-            ->withTimestamps();
-    }
-
-    /** O'quvchining ota-onalari */
-    public function parents(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'parent_student', 'student_id', 'parent_id')
             ->withTimestamps();
     }
 

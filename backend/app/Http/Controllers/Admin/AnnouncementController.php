@@ -86,7 +86,6 @@ class AnnouncementController extends Controller
             Announcement::AUDIENCE_ALL => User::where('is_active', true)->get(),
             Announcement::AUDIENCE_TEACHERS => User::role(User::ROLE_TEACHER)->where('is_active', true)->get(),
             Announcement::AUDIENCE_STUDENTS => User::role(User::ROLE_STUDENT)->where('is_active', true)->get(),
-            Announcement::AUDIENCE_PARENTS => User::role(User::ROLE_PARENT)->where('is_active', true)->get(),
             Announcement::AUDIENCE_GROUP => $this->groupRecipients($announcement->group_id),
             default => collect(),
         };
@@ -98,18 +97,13 @@ class AnnouncementController extends Controller
             return collect();
         }
 
-        $group = Group::with('students.parents', 'teacher')->find($groupId);
+        $group = Group::with('students', 'teacher')->find($groupId);
         if (! $group) {
             return collect();
         }
 
         $recipients = $group->students; // o'quvchilar
 
-        // O'quvchilarning ota-onalari
-        $parents = $group->students->flatMap(fn (User $s) => $s->parents);
-
-        // O'qituvchi
-        $recipients = $recipients->merge($parents);
         if ($group->teacher) {
             $recipients->push($group->teacher);
         }

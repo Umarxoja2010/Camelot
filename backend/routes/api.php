@@ -9,13 +9,13 @@ use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Guardian\ChildController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Student\LearningController;
 use App\Http\Controllers\Student\PaymentController as StudentPaymentController;
 use App\Http\Controllers\Teacher\AttendanceController;
 use App\Http\Controllers\Teacher\GradeController;
 use App\Http\Controllers\Teacher\GroupController as TeacherGroupController;
+use App\Http\Controllers\Teacher\HomeworkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,13 +59,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/groups/{group}/enroll', [AdminGroupController::class, 'enroll']);
         Route::delete('/groups/{group}/students/{studentId}', [AdminGroupController::class, 'removeStudent']);
 
-        // To'lov kartalari (kebab-case sabab explicit, {paymentCard} param)
+        // To'lovlar va to'lov kartalari (bitta bo'lim)
         Route::get('/payment-cards', [AdminPaymentCardController::class, 'index']);
         Route::post('/payment-cards', [AdminPaymentCardController::class, 'store']);
         Route::put('/payment-cards/{paymentCard}', [AdminPaymentCardController::class, 'update']);
         Route::delete('/payment-cards/{paymentCard}', [AdminPaymentCardController::class, 'destroy']);
 
-        // To'lovlar
         Route::get('/payments', [AdminPaymentController::class, 'index']);
         Route::get('/payments/{payment}', [AdminPaymentController::class, 'show']);
         Route::patch('/payments/{payment}/confirm', [AdminPaymentController::class, 'confirm']);
@@ -90,6 +89,11 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/groups/{group}/grades', [GradeController::class, 'index']);
         Route::post('/groups/{group}/grades', [GradeController::class, 'store']);
         Route::delete('/grades/{grade}', [GradeController::class, 'destroy']);
+
+        // Uy vazifalari
+        Route::get('/groups/{group}/homework', [HomeworkController::class, 'index']);
+        Route::post('/groups/{group}/homework', [HomeworkController::class, 'store']);
+        Route::delete('/homework/{homework}', [HomeworkController::class, 'destroy']);
     });
 
     /*
@@ -100,22 +104,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('student')->middleware('role:student')->group(function () {
         Route::get('/groups', [LearningController::class, 'groups']);
         Route::get('/attendance', [LearningController::class, 'attendance']);
-        Route::get('/grades', [LearningController::class, 'grades']);
+        Route::get('/homework', [LearningController::class, 'homework']);
 
         Route::get('/payment-cards', [StudentPaymentController::class, 'cards']);
         Route::get('/payments', [StudentPaymentController::class, 'index']);
         Route::post('/payments', [StudentPaymentController::class, 'store']);
-    });
-
-    /*
-    |----------------------------------------------------------------------
-    | OTA-ONA
-    |----------------------------------------------------------------------
-    */
-    Route::prefix('parent')->middleware('role:parent')->group(function () {
-        Route::get('/children', [ChildController::class, 'index']);
-        Route::get('/children/{child}/groups', [ChildController::class, 'groups']);
-        Route::get('/children/{child}/attendance', [ChildController::class, 'attendance']);
-        Route::get('/children/{child}/grades', [ChildController::class, 'grades']);
     });
 });

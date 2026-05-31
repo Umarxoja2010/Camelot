@@ -10,7 +10,6 @@ class UpdateCourseRequest extends StoreCourseRequest
 
         $rules['name'] = ['sometimes', 'array'];
         $rules['name.uz'] = ['sometimes', 'required', 'string', 'max:255'];
-        $rules['type'] = ['sometimes', $rules['type'][1]];
 
         return $rules;
     }

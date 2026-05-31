@@ -59,6 +59,7 @@
     "announcements": "Объявления",
     "myGroups": "Мои группы",
     "attendance": "Посещаемость",
+    "homework": "Домашние задания",
     "grades": "Оценки",
     "myPayments": "Мои платежи",
     "children": "Мои дети",
@@ -154,6 +155,13 @@
     "homework": "Домашнее задание",
     "test": "Тест",
     "exam": "Экзамен"
+  },
+  "homework": {
+    "title": "Домашние задания",
+    "add": "Задать задание",
+    "titleField": "Тема / заголовок",
+    "description": "Текст задания",
+    "dueDate": "Срок сдачи"
   },
   "payments": {
     "title": "Платежи",

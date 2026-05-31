@@ -24,9 +24,6 @@ class StoreUserRequest extends FormRequest
             'password' => ['required', 'string', 'min:6'],
             'is_active' => ['boolean'],
             'telegram_chat_id' => ['nullable', 'string', 'max:50'],
-            // Ota-ona uchun farzandlar (student id'lari)
-            'child_ids' => ['nullable', 'array'],
-            'child_ids.*' => ['integer', 'exists:users,id'],
             // O'quvchi uchun guruhlar
             'group_ids' => ['nullable', 'array'],
             'group_ids.*' => ['integer', 'exists:groups,id'],

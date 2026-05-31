@@ -7,6 +7,7 @@ use App\Models\Attendance;
 use App\Models\Course;
 use App\Models\Grade;
 use App\Models\Group;
+use App\Models\Homework;
 use App\Models\Payment;
 use App\Models\PaymentCard;
 use App\Models\User;
@@ -30,12 +31,6 @@ class DatabaseSeeder extends Seeder
             User::ROLE_STUDENT,
             '+9989011130'.str_pad((string) $i, 2, '0', STR_PAD_LEFT),
         ));
-
-        // Ota-onalar
-        $parent1 = $this->user('parent1@camelot.uz', 'Ota-ona 1', User::ROLE_PARENT, '+998901114401');
-        $parent2 = $this->user('parent2@camelot.uz', 'Ota-ona 2', User::ROLE_PARENT, '+998901114402');
-        $parent1->children()->sync([$students[0]->id, $students[1]->id]);
-        $parent2->children()->sync([$students[2]->id]);
 
         // Faqat bir marta katalog yaratamiz
         if (Course::count() === 0) {
@@ -61,11 +56,10 @@ class DatabaseSeeder extends Seeder
 
     private function seedCatalog(User $admin, User $teacher1, User $teacher2, $students): void
     {
-        // Kurslar
+        // Kurslar (faqat til kurslari)
         $beginner = Course::create([
             'name' => ['uz' => 'Ingliz tili — Boshlang\'ich', 'ru' => 'Английский — Начальный', 'en' => 'English — Beginner'],
             'description' => ['uz' => 'Noldan boshlovchilar uchun', 'ru' => 'Для начинающих с нуля', 'en' => 'For absolute beginners'],
-            'type' => Course::TYPE_LANGUAGE,
             'level' => 'A1',
             'monthly_fee' => 300000,
         ]);
@@ -73,16 +67,8 @@ class DatabaseSeeder extends Seeder
         $ielts = Course::create([
             'name' => ['uz' => 'IELTS tayyorlov', 'ru' => 'Подготовка к IELTS', 'en' => 'IELTS Preparation'],
             'description' => ['uz' => 'IELTS imtihoniga tayyorgarlik', 'ru' => 'Подготовка к экзамену IELTS', 'en' => 'IELTS exam preparation'],
-            'type' => Course::TYPE_LANGUAGE,
             'level' => 'B2+',
             'monthly_fee' => 500000,
-        ]);
-
-        $math = Course::create([
-            'name' => ['uz' => 'Matematika 5-sinf', 'ru' => 'Математика 5 класс', 'en' => 'Math Grade 5'],
-            'type' => Course::TYPE_SCHOOL,
-            'level' => '5-sinf',
-            'monthly_fee' => 250000,
         ]);
 
         // Guruhlar
@@ -110,14 +96,6 @@ class DatabaseSeeder extends Seeder
             'starts_on' => Carbon::today()->subWeeks(2),
         ]);
 
-        $g3 = Group::create([
-            'course_id' => $math->id,
-            'teacher_id' => $teacher1->id,
-            'name' => 'Math-5A',
-            'schedule' => [['day' => 'sat', 'start' => '10:00', 'end' => '11:30']],
-            'room' => '103',
-        ]);
-
         // O'quvchilarni yozish
         $enrollPivot = fn () => ['status' => 'active', 'enrolled_at' => Carbon::today()];
         $g1->students()->sync([
@@ -128,10 +106,6 @@ class DatabaseSeeder extends Seeder
         $g2->students()->sync([
             $students[3]->id => $enrollPivot(),
             $students[4]->id => $enrollPivot(),
-        ]);
-        $g3->students()->sync([
-            $students[0]->id => $enrollPivot(),
-            $students[5]->id => $enrollPivot(),
         ]);
 
         // To'lov kartalari
@@ -179,23 +153,29 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Baholar
+        // Uy vazifalari
+        Homework::create([
+            'group_id' => $g1->id,
+            'created_by' => $teacher1->id,
+            'title' => 'Unit 1: Vocabulary',
+            'description' => '10 ta yangi so\'zni yodlang va misol gaplar tuzing.',
+            'due_date' => Carbon::today()->addDays(3),
+        ]);
+        Homework::create([
+            'group_id' => $g1->id,
+            'created_by' => $teacher1->id,
+            'title' => 'Workbook page 12-13',
+            'description' => 'Barcha mashqlarni bajaring.',
+            'due_date' => Carbon::today()->addDays(5),
+        ]);
+
+        // Baholar (o'qituvchi ichki foydalanishi uchun)
         Grade::create([
             'group_id' => $g1->id,
             'student_id' => $students[0]->id,
             'type' => Grade::TYPE_TEST,
             'title' => 'Unit 1 Test',
             'score' => 85,
-            'max_score' => 100,
-            'date' => Carbon::today()->subDays(3),
-            'graded_by' => $teacher1->id,
-        ]);
-        Grade::create([
-            'group_id' => $g1->id,
-            'student_id' => $students[1]->id,
-            'type' => Grade::TYPE_TEST,
-            'title' => 'Unit 1 Test',
-            'score' => 72,
             'max_score' => 100,
             'date' => Carbon::today()->subDays(3),
             'graded_by' => $teacher1->id,

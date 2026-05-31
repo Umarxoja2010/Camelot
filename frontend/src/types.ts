@@ -1,7 +1,7 @@
 export type Locale = 'uz' | 'ru' | 'en'
 export type Translations = Partial<Record<Locale, string>>
 
-export type Role = 'admin' | 'teacher' | 'student' | 'parent'
+export type Role = 'admin' | 'teacher' | 'student'
 
 export interface User {
   id: number
@@ -13,7 +13,6 @@ export interface User {
   avatar: string | null
   is_active: boolean
   has_telegram: boolean
-  children?: User[]
   created_at: string
 }
 
@@ -23,7 +22,6 @@ export interface Course {
   description: string | null
   name_translations: Translations
   description_translations: Translations
-  type: 'language' | 'school'
   level: string | null
   monthly_fee: number
   is_active: boolean
@@ -109,7 +107,7 @@ export interface Payment {
   created_at: string
 }
 
-export type Audience = 'all' | 'teachers' | 'students' | 'parents' | 'group'
+export type Audience = 'all' | 'teachers' | 'students' | 'group'
 
 export interface Announcement {
   id: number
@@ -122,6 +120,17 @@ export interface Announcement {
   group?: Group
   publisher?: User
   is_published: boolean
+  created_at: string
+}
+
+export interface Homework {
+  id: number
+  group_id: number
+  title: string
+  description: string | null
+  due_date: string | null
+  group?: Group
+  creator?: User
   created_at: string
 }
 
@@ -152,7 +161,6 @@ export interface AdminDashboard {
   totals: {
     students: number
     teachers: number
-    parents: number
     groups: number
     courses: number
     pending_payments: number

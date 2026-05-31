@@ -16,7 +16,6 @@ import AdminUsers from '@/pages/admin/AdminUsers'
 import AdminCourses from '@/pages/admin/AdminCourses'
 import AdminGroups from '@/pages/admin/AdminGroups'
 import AdminGroupDetail from '@/pages/admin/AdminGroupDetail'
-import AdminPaymentCards from '@/pages/admin/AdminPaymentCards'
 import AdminPayments from '@/pages/admin/AdminPayments'
 import AdminAnnouncements from '@/pages/admin/AdminAnnouncements'
 
@@ -25,11 +24,8 @@ import TeacherGroupDetail from '@/pages/teacher/TeacherGroupDetail'
 
 import StudentGroups from '@/pages/student/StudentGroups'
 import StudentAttendance from '@/pages/student/StudentAttendance'
-import StudentGrades from '@/pages/student/StudentGrades'
+import StudentHomework from '@/pages/student/StudentHomework'
 import StudentPayments from '@/pages/student/StudentPayments'
-
-import ParentChildren from '@/pages/parent/ParentChildren'
-import ParentChildDetail from '@/pages/parent/ParentChildDetail'
 
 function RoleHome() {
   const { role, loading } = useAuth()
@@ -56,7 +52,6 @@ export default function App() {
             <Route path="/admin/courses" element={<AdminCourses />} />
             <Route path="/admin/groups" element={<AdminGroups />} />
             <Route path="/admin/groups/:id" element={<AdminGroupDetail />} />
-            <Route path="/admin/payment-cards" element={<AdminPaymentCards />} />
             <Route path="/admin/payments" element={<AdminPayments />} />
             <Route path="/admin/announcements" element={<AdminAnnouncements />} />
           </Route>
@@ -71,14 +66,8 @@ export default function App() {
           <Route element={<ProtectedRoute roles={['student']} />}>
             <Route path="/student" element={<StudentGroups />} />
             <Route path="/student/attendance" element={<StudentAttendance />} />
-            <Route path="/student/grades" element={<StudentGrades />} />
+            <Route path="/student/homework" element={<StudentHomework />} />
             <Route path="/student/payments" element={<StudentPayments />} />
-          </Route>
-
-          {/* Parent */}
-          <Route element={<ProtectedRoute roles={['parent']} />}>
-            <Route path="/parent" element={<ParentChildren />} />
-            <Route path="/parent/children/:id" element={<ParentChildDetail />} />
           </Route>
         </Route>
       </Route>

@@ -1,8 +1,8 @@
-# 🎓 Camelot LMS — O'quv markaz va maktab boshqaruv tizimi
+# 🎓 Camelot LMS — O'quv markaz boshqaruv tizimi
 
-Ko'p tilli (uz / ru / en) o'quv markaz + maktab boshqaruv platformasi. **4 rol** bir tizimda bog'lanadi: **Admin, O'qituvchi, O'quvchi, Ota-ona**.
+Ko'p tilli (uz / ru / en) **o'quv markaz** boshqaruv platformasi. **3 rol** bir tizimda bog'lanadi: **Admin, O'qituvchi, O'quvchi**.
 
-> **Holat:** Backend REST API **va** to'liq responsiv React frontend (4 rol uchun panellar) tayyor.
+> **Holat:** Backend REST API **va** to'liq responsiv React frontend tayyor.
 
 | Qatlam | Texnologiya |
 |--------|-------------|
@@ -11,15 +11,15 @@ Ko'p tilli (uz / ru / en) o'quv markaz + maktab boshqaruv platformasi. **4 rol**
 
 ---
 
-## ✨ Imkoniyatlar (backend tayyor)
+## ✨ Imkoniyatlar
 
-- 🔐 **Rollar**: admin / o'qituvchi / o'quvchi / ota-ona (token-based auth, hisoblar admin tomonidan ochiladi)
+- 🔐 **Rollar**: admin / o'qituvchi / o'quvchi (token-based auth, hisoblar admin tomonidan ochiladi)
 - 🌍 **Ko'p tillilik**: kurs nomi, tavsifi, e'lonlar — uz/ru/en (JSON, `X-Locale` header)
-- 📚 **Kurslar va guruhlar**: ingliz tili darajalari (A1, IELTS...) yoki maktab fanlari (5-sinf). O'qituvchi biriktirish, o'quvchi yozish, dars jadvali
-- ✅ **Davomat**: o'qituvchi belgilaydi, o'quvchi/ota-ona ko'radi
-- 📝 **Baholar**: test/uy vazifasi/imtihon natijalari (foiz bilan)
-- 💳 **To'lovlar**: admin karta raqamlarini boshqaradi → o'quvchi chek rasmini yuklaydi → admin tasdiqlaydi/rad etadi
-- 📢 **E'lonlar**: auditoriya bo'yicha (hammaga / o'qituvchilarga / o'quvchilarga / ota-onalarga / guruhga)
+- 📚 **Kurslar va guruhlar**: til kursi darajalari (A1, IELTS...), o'qituvchi biriktirish, o'quvchi yozish, dars jadvali
+- ✅ **Davomat**: o'qituvchi keldi/kelmadi deb belgilaydi, o'quvchi o'zi ko'radi
+- 📝 **Uy vazifalari**: o'qituvchi guruhga vazifa beradi, o'quvchilar ko'radi (+ bildirishnoma)
+- 💳 **To'lovlar**: admin karta raqamlarini boshqaradi → o'quvchi chek rasmini yuklaydi → admin tasdiqlaydi/rad etadi (to'lovlar va kartalar bitta bo'limda)
+- 📢 **E'lonlar**: auditoriya bo'yicha (hammaga / o'qituvchilarga / o'quvchilarga / guruhga)
 - 🔔 **Bildirishnomalar**: ilova ichida + **Telegram bot** va **SMS (Eskiz.uz)** — sozlamada yoqiladi
 
 ---
@@ -49,7 +49,6 @@ php artisan serve               # http://localhost:8000
 | Admin | `admin@camelot.uz` |
 | O'qituvchi | `teacher1@camelot.uz`, `teacher2@camelot.uz` |
 | O'quvchi | `student1@camelot.uz` … `student6@camelot.uz` |
-| Ota-ona | `parent1@camelot.uz`, `parent2@camelot.uz` |
 
 ---
 
@@ -92,13 +91,11 @@ Base URL: `http://localhost:8000/api`
 - `GET /groups`, `GET /groups/{group}`
 - `GET|POST /groups/{group}/attendance`
 - `GET|POST /groups/{group}/grades`, `DELETE /grades/{grade}`
+- `GET|POST /groups/{group}/homework`, `DELETE /homework/{homework}`
 
 **O'quvchi** (`/student`, role:student):
-- `GET /groups`, `GET /attendance`, `GET /grades`
+- `GET /groups`, `GET /attendance`, `GET /homework`
 - `GET /payment-cards`, `GET /payments`, `POST /payments` (chek yuklash)
-
-**Ota-ona** (`/parent`, role:parent):
-- `GET /children`, `GET /children/{child}/groups|attendance|grades`
 
 ---
 
@@ -115,15 +112,13 @@ cp .env.example .env        # VITE_API_URL=http://localhost:8000/api
 npm run dev                 # http://localhost:5173
 ```
 
-Brauzerda **http://localhost:5173** ni oching va demo hisob bilan kiring.
 Har bir rol o'z paneliga avtomatik yo'naltiriladi:
 
 | Rol | Panel imkoniyatlari |
 |-----|---------------------|
-| 🛡️ **Admin** | Statistika, foydalanuvchilar, kurslar, guruhlar (jadval + o'quvchi yozish), to'lovlar (chek ko'rish + tasdiqlash), to'lov kartalari, e'lonlar |
-| 👨‍🏫 **O'qituvchi** | Guruhlarim, davomat belgilash, baho qo'yish |
-| 🎓 **O'quvchi** | Guruhlarim, davomat, baholar, to'lov (chek yuklash) |
-| 👪 **Ota-ona** | Farzandlar, ularning guruh/davomat/baholari |
+| 🛡️ **Admin** | Statistika, foydalanuvchilar, kurslar, guruhlar (jadval + o'quvchi yozish), to'lovlar + kartalar (bitta bo'lim), e'lonlar |
+| 👨‍🏫 **O'qituvchi** | Guruhlarim → davomat belgilash (keldi/kelmadi), uy vazifasi berish, baho qo'yish |
+| 🎓 **O'quvchi** | Guruhlarim, davomat (ko'rish), uy vazifalari, to'lov (chek yuklash) |
 
 Interfeys uch tilda (uz/ru/en), to'liq responsiv (mobil + planshet + desktop).
 
@@ -133,7 +128,7 @@ Interfeys uch tilda (uz/ru/en), to'liq responsiv (mobil + planshet + desktop).
 
 - [x] Backend (Laravel REST API)
 - [x] Frontend (React) — har rol uchun panel, responsiv
-- [ ] Chat (o'quvchi ↔ o'qituvchi ↔ ota-ona)
-- [ ] Uy vazifalari (fayl yuklash)
+- [ ] Chat (o'quvchi ↔ o'qituvchi)
+- [ ] Uy vazifasiga fayl biriktirish / topshirish
 - [ ] Online to'lov (Payme/Click)
 - [ ] Hisobotlar (Excel/PDF)

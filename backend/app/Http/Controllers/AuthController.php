@@ -42,13 +42,7 @@ class AuthController extends Controller
 
     public function me(Request $request): UserResource
     {
-        $user = $request->user();
-
-        if ($user->isParent()) {
-            $user->load('children');
-        }
-
-        return new UserResource($user);
+        return new UserResource($request->user());
     }
 
     public function logout(Request $request): JsonResponse

@@ -65,6 +65,11 @@ class Group extends Model
         return $this->hasMany(Grade::class);
     }
 
+    public function homeworks(): HasMany
+    {
+        return $this->hasMany(Homework::class);
+    }
+
     public function scopeActive($query)
     {
         return $query->where('is_active', true);

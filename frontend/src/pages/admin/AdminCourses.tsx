@@ -13,13 +13,12 @@ const LOCALE_LABELS: Record<string, string> = { uz: "O'zbekcha", ru: 'Русск
 interface FormState {
   name: Translations
   description: Translations
-  type: 'language' | 'school'
   level: string
   monthly_fee: string
   is_active: boolean
 }
 
-const EMPTY: FormState = { name: {}, description: {}, type: 'language', level: '', monthly_fee: '0', is_active: true }
+const EMPTY: FormState = { name: {}, description: {}, level: '', monthly_fee: '0', is_active: true }
 
 export default function AdminCourses() {
   const { t } = useTranslation()
@@ -46,7 +45,7 @@ export default function AdminCourses() {
     setEditing(c)
     setForm({
       name: c.name_translations || {}, description: c.description_translations || {},
-      type: c.type, level: c.level ?? '', monthly_fee: String(c.monthly_fee), is_active: c.is_active,
+      level: c.level ?? '', monthly_fee: String(c.monthly_fee), is_active: c.is_active,
     })
     setError(''); setOpen(true)
   }
@@ -54,7 +53,7 @@ export default function AdminCourses() {
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setError(''); setSaving(true)
     const payload = {
-      name: form.name, description: form.description, type: form.type,
+      name: form.name, description: form.description,
       level: form.level || null, monthly_fee: Number(form.monthly_fee), is_active: form.is_active,
     }
     try {
@@ -81,7 +80,6 @@ export default function AdminCourses() {
           {items.map((c) => (
             <div key={c.id} className="card p-5">
               <div className="mb-2 flex items-center gap-2">
-                <span className="badge bg-brand-100 text-brand-700">{t(`courses.type${c.type === 'language' ? 'Language' : 'School'}`)}</span>
                 {c.level && <span className="badge bg-slate-100 text-slate-600">{c.level}</span>}
                 {!c.is_active && <span className="badge bg-slate-200 text-slate-500">off</span>}
               </div>
@@ -145,17 +143,10 @@ export default function AdminCourses() {
               ))}
             </div>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            <div>
-              <label className="label">{t('courses.type')}</label>
-              <select className="input" value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value as 'language' | 'school' })}>
-                <option value="language">{t('courses.typeLanguage')}</option>
-                <option value="school">{t('courses.typeSchool')}</option>
-              </select>
-            </div>
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">{t('courses.level')}</label>
-              <input className="input" value={form.level} onChange={(e) => setForm({ ...form, level: e.target.value })} placeholder="A1 / 5-sinf" />
+              <input className="input" value={form.level} onChange={(e) => setForm({ ...form, level: e.target.value })} placeholder="A1 / IELTS" />
             </div>
             <div>
               <label className="label">{t('courses.monthlyFee')}</label>

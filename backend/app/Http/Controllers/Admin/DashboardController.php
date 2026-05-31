@@ -33,7 +33,6 @@ class DashboardController extends Controller
                 'totals' => [
                     'students' => User::role(User::ROLE_STUDENT)->count(),
                     'teachers' => User::role(User::ROLE_TEACHER)->count(),
-                    'parents' => User::role(User::ROLE_PARENT)->count(),
                     'groups' => Group::count(),
                     'courses' => Course::count(),
                     'pending_payments' => Payment::where('status', Payment::STATUS_PENDING)->count(),

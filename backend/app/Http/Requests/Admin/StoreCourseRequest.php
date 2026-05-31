@@ -22,7 +22,6 @@ class StoreCourseRequest extends FormRequest
             'name.en' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'array'],
             'description.*' => ['nullable', 'string', 'max:2000'],
-            'type' => ['required', Rule::in([Course::TYPE_LANGUAGE, Course::TYPE_SCHOOL])],
             'level' => ['nullable', 'string', 'max:50'],
             'monthly_fee' => ['nullable', 'numeric', 'min:0'],
             'is_active' => ['boolean'],

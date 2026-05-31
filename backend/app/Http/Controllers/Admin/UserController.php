@@ -50,12 +50,12 @@ class UserController extends Controller
 
         $this->syncRelations($user, $data);
 
-        return (new UserResource($user->load('children')))->response()->setStatusCode(201);
+        return (new UserResource($user))->response()->setStatusCode(201);
     }
 
     public function show(User $user)
     {
-        $user->load('children', 'parents', 'groups.course');
+        $user->load('groups.course');
 
         return new UserResource($user);
     }
@@ -74,7 +74,7 @@ class UserController extends Controller
 
         $this->syncRelations($user, $data);
 
-        return new UserResource($user->fresh()->load('children'));
+        return new UserResource($user->fresh());
     }
 
     public function destroy(User $user)
@@ -85,14 +85,10 @@ class UserController extends Controller
     }
 
     /**
-     * Ota-ona uchun farzandlarni, o'quvchi uchun guruhlarni sinxronlash.
+     * O'quvchi uchun guruhlarni sinxronlash.
      */
     private function syncRelations(User $user, array $data): void
     {
-        if ($user->isParent() && array_key_exists('child_ids', $data)) {
-            $user->children()->sync($data['child_ids'] ?? []);
-        }
-
         if ($user->isStudent() && array_key_exists('group_ids', $data)) {
             $pivot = collect($data['group_ids'] ?? [])->mapWithKeys(fn ($id) => [
                 $id => ['status' => 'active', 'enrolled_at' => Carbon::today()],

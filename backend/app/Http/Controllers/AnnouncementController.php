@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\AnnouncementResource;
 use App\Models\Announcement;
-use App\Models\Enrollment;
 use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,7 +22,6 @@ class AnnouncementController extends Controller
         $audiences[] = match ($user->role) {
             User::ROLE_TEACHER => Announcement::AUDIENCE_TEACHERS,
             User::ROLE_STUDENT => Announcement::AUDIENCE_STUDENTS,
-            User::ROLE_PARENT => Announcement::AUDIENCE_PARENTS,
             default => Announcement::AUDIENCE_ALL,
         };
 
@@ -58,10 +56,6 @@ class AnnouncementController extends Controller
         return match ($user->role) {
             User::ROLE_TEACHER => Group::where('teacher_id', $user->id)->pluck('id')->all(),
             User::ROLE_STUDENT => $user->groups()->pluck('groups.id')->all(),
-            User::ROLE_PARENT => Enrollment::whereIn(
-                'student_id',
-                $user->children()->pluck('users.id')
-            )->pluck('group_id')->unique()->values()->all(),
             default => [],
         };
     }

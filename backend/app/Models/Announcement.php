@@ -15,14 +15,12 @@ class Announcement extends Model
     public const AUDIENCE_ALL = 'all';
     public const AUDIENCE_TEACHERS = 'teachers';
     public const AUDIENCE_STUDENTS = 'students';
-    public const AUDIENCE_PARENTS = 'parents';
     public const AUDIENCE_GROUP = 'group';
 
     public const AUDIENCES = [
         self::AUDIENCE_ALL,
         self::AUDIENCE_TEACHERS,
         self::AUDIENCE_STUDENTS,
-        self::AUDIENCE_PARENTS,
         self::AUDIENCE_GROUP,
     ];
 

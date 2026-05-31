@@ -16,8 +16,6 @@ export function homePathFor(role: Role): string {
       return '/teacher/groups'
     case 'student':
       return '/student'
-    case 'parent':
-      return '/parent'
   }
 }
 
@@ -30,7 +28,6 @@ export function navItemsFor(role: Role): NavItem[] {
         { to: '/admin/courses', labelKey: 'nav.courses', icon: '📚' },
         { to: '/admin/groups', labelKey: 'nav.groups', icon: '👨‍🏫' },
         { to: '/admin/payments', labelKey: 'nav.payments', icon: '💳' },
-        { to: '/admin/payment-cards', labelKey: 'nav.paymentCards', icon: '🏦' },
         { to: '/admin/announcements', labelKey: 'nav.announcements', icon: '📢' },
       ]
     case 'teacher':
@@ -42,13 +39,8 @@ export function navItemsFor(role: Role): NavItem[] {
       return [
         { to: '/student', labelKey: 'nav.myGroups', icon: '📚', end: true },
         { to: '/student/attendance', labelKey: 'nav.attendance', icon: '✅' },
-        { to: '/student/grades', labelKey: 'nav.grades', icon: '📝' },
+        { to: '/student/homework', labelKey: 'nav.homework', icon: '📝' },
         { to: '/student/payments', labelKey: 'nav.myPayments', icon: '💳' },
-        { to: '/announcements', labelKey: 'nav.announcements', icon: '📢' },
-      ]
-    case 'parent':
-      return [
-        { to: '/parent', labelKey: 'nav.children', icon: '👪', end: true },
         { to: '/announcements', labelKey: 'nav.announcements', icon: '📢' },
       ]
   }

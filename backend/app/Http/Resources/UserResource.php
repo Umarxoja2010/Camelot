@@ -23,7 +23,6 @@ class UserResource extends JsonResource
             'avatar' => $this->avatar,
             'is_active' => (bool) $this->is_active,
             'has_telegram' => ! empty($this->telegram_chat_id),
-            'children' => UserResource::collection($this->whenLoaded('children')),
             'created_at' => $this->created_at,
         ];
     }

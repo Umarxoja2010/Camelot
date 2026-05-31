@@ -40,9 +40,4 @@ class UserFactory extends Factory
     {
         return $this->state(fn () => ['role' => User::ROLE_TEACHER]);
     }
-
-    public function parent(): static
-    {
-        return $this->state(fn () => ['role' => User::ROLE_PARENT]);
-    }
 }

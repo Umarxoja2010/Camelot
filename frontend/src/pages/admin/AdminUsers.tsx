@@ -7,7 +7,7 @@ import Loader from '@/components/Loader'
 import Modal from '@/components/Modal'
 import Pagination from '@/components/Pagination'
 
-const ROLES: Role[] = ['admin', 'teacher', 'student', 'parent']
+const ROLES: Role[] = ['admin', 'teacher', 'student']
 
 interface FormState {
   name: string
@@ -18,13 +18,12 @@ interface FormState {
   password: string
   is_active: boolean
   telegram_chat_id: string
-  child_ids: number[]
   group_ids: number[]
 }
 
 const EMPTY: FormState = {
   name: '', email: '', phone: '', role: 'student', locale: 'uz',
-  password: '', is_active: true, telegram_chat_id: '', child_ids: [], group_ids: [],
+  password: '', is_active: true, telegram_chat_id: '', group_ids: [],
 }
 
 export default function AdminUsers() {
@@ -36,8 +35,7 @@ export default function AdminUsers() {
   const [roleFilter, setRoleFilter] = useState<Role | ''>('')
   const [search, setSearch] = useState('')
 
-  // selector ma'lumotlari
-  const [students, setStudents] = useState<User[]>([])
+  // o'quvchi yaratishda guruh tanlash uchun
   const [groups, setGroups] = useState<Group[]>([])
 
   // modal
@@ -65,8 +63,6 @@ export default function AdminUsers() {
   }, [load])
 
   useEffect(() => {
-    api.get<Paginated<User>>('/admin/users', { params: { role: 'student', per_page: 100 } })
-      .then((r) => setStudents(r.data.data))
     api.get<{ data: Group[] }>('/admin/groups').then((r) => setGroups(r.data.data))
   }, [])
 
@@ -77,31 +73,21 @@ export default function AdminUsers() {
     setOpen(true)
   }
 
-  const openEdit = async (u: User) => {
+  const openEdit = (u: User) => {
     setEditing(u)
     setForm({
       name: u.name, email: u.email, phone: u.phone ?? '', role: u.role, locale: u.locale,
-      password: '', is_active: u.is_active, telegram_chat_id: '',
-      child_ids: [], group_ids: [],
+      password: '', is_active: u.is_active, telegram_chat_id: '', group_ids: [],
     })
     setError('')
     setOpen(true)
-    // Ota-ona farzandlarini to'liq yozuvdan oldindan to'ldiramiz
-    if (u.role === 'parent') {
-      try {
-        const res = await api.get<{ data: User }>(`/admin/users/${u.id}`)
-        setForm((f) => ({ ...f, child_ids: res.data.data.children?.map((c) => c.id) ?? [] }))
-      } catch {
-        // e'tibor bermaymiz
-      }
-    }
   }
 
-  const toggleId = (key: 'child_ids' | 'group_ids', id: number) => {
+  const toggleGroup = (id: number) => {
     setForm((f) => {
-      const set = new Set(f[key])
+      const set = new Set(f.group_ids)
       set.has(id) ? set.delete(id) : set.add(id)
-      return { ...f, [key]: [...set] }
+      return { ...f, group_ids: [...set] }
     })
   }
 
@@ -116,9 +102,7 @@ export default function AdminUsers() {
       telegram_chat_id: form.telegram_chat_id || null,
     }
     if (form.password) payload.password = form.password
-    if (form.role === 'parent') payload.child_ids = form.child_ids
-    // group_ids faqat YARATISHDA yuboriladi — tahrirlashda enrollmentlar
-    // guruh sahifasidan boshqariladi (aks holda bo'sh ro'yxat ularni o'chiradi)
+    // group_ids faqat YARATISHDA — tahrirlashda enrollmentlar guruh sahifasidan boshqariladi
     if (form.role === 'student' && !editing) payload.group_ids = form.group_ids
 
     try {
@@ -263,27 +247,14 @@ export default function AdminUsers() {
             {editing && <p className="mt-1 text-xs text-slate-400">{t('users.passwordEditHint')}</p>}
           </div>
 
-          {form.role === 'parent' && (
-            <div className="sm:col-span-2">
-              <label className="label">{t('users.children')}</label>
-              <div className="max-h-40 space-y-1 overflow-y-auto rounded-lg border border-slate-200 p-2">
-                {students.map((s) => (
-                  <label key={s.id} className="flex items-center gap-2 text-sm">
-                    <input type="checkbox" checked={form.child_ids.includes(s.id)} onChange={() => toggleId('child_ids', s.id)} />
-                    {s.name} <span className="text-slate-400">({s.email})</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-          )}
-
           {form.role === 'student' && !editing && (
             <div className="sm:col-span-2">
               <label className="label">{t('users.groups')}</label>
               <div className="max-h-40 space-y-1 overflow-y-auto rounded-lg border border-slate-200 p-2">
+                {groups.length === 0 && <p className="text-sm text-slate-400">{t('common.noData')}</p>}
                 {groups.map((g) => (
                   <label key={g.id} className="flex items-center gap-2 text-sm">
-                    <input type="checkbox" checked={form.group_ids.includes(g.id)} onChange={() => toggleId('group_ids', g.id)} />
+                    <input type="checkbox" checked={form.group_ids.includes(g.id)} onChange={() => toggleGroup(g.id)} />
                     {g.name} <span className="text-slate-400">({g.course?.name})</span>
                   </label>
                 ))}

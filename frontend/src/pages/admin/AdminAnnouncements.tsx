@@ -9,7 +9,7 @@ import Loader from '@/components/Loader'
 import Modal from '@/components/Modal'
 
 const LOCALE_LABELS: Record<string, string> = { uz: "O'zbekcha", ru: 'Русский', en: 'English' }
-const AUDIENCES: Audience[] = ['all', 'teachers', 'students', 'parents', 'group']
+const AUDIENCES: Audience[] = ['all', 'teachers', 'students', 'group']
 
 interface FormState {
   title: Translations

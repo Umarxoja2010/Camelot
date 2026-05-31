@@ -26,7 +26,6 @@ export default function AdminDashboard() {
   const cards = [
     { label: t('dashboard.students'), value: stats.totals.students, icon: '🎓', color: 'bg-blue-100' },
     { label: t('dashboard.teachers'), value: stats.totals.teachers, icon: '👨‍🏫', color: 'bg-violet-100' },
-    { label: t('dashboard.parents'), value: stats.totals.parents, icon: '👪', color: 'bg-pink-100' },
     { label: t('dashboard.groups'), value: stats.totals.groups, icon: '👥', color: 'bg-amber-100' },
     { label: t('dashboard.courses'), value: stats.totals.courses, icon: '📚', color: 'bg-emerald-100' },
     { label: t('dashboard.pendingPayments'), value: stats.totals.pending_payments, icon: '⏳', color: 'bg-orange-100' },

@@ -26,8 +26,6 @@ class UpdateUserRequest extends FormRequest
             'password' => ['nullable', 'string', 'min:6'],
             'is_active' => ['boolean'],
             'telegram_chat_id' => ['nullable', 'string', 'max:50'],
-            'child_ids' => ['nullable', 'array'],
-            'child_ids.*' => ['integer', 'exists:users,id'],
             'group_ids' => ['nullable', 'array'],
             'group_ids.*' => ['integer', 'exists:groups,id'],
         ];

@@ -59,6 +59,7 @@
     "announcements": "E'lonlar",
     "myGroups": "Guruhlarim",
     "attendance": "Davomat",
+    "homework": "Uy vazifalari",
     "grades": "Baholar",
     "myPayments": "To'lovlarim",
     "children": "Farzandlarim",
@@ -154,6 +155,13 @@
     "homework": "Uy vazifasi",
     "test": "Test",
     "exam": "Imtihon"
+  },
+  "homework": {
+    "title": "Uy vazifalari",
+    "add": "Vazifa berish",
+    "titleField": "Mavzu / sarlavha",
+    "description": "Vazifa matni",
+    "dueDate": "Topshirish muddati"
   },
   "payments": {
     "title": "To'lovlar",

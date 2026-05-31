@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AttendanceResource;
-use App\Http\Resources\GradeResource;
 use App\Http\Resources\GroupResource;
+use App\Http\Resources\HomeworkResource;
+use App\Models\Homework;
 use Illuminate\Http\Request;
 
 class LearningController extends Controller
@@ -21,10 +22,10 @@ class LearningController extends Controller
         return GroupResource::collection($groups);
     }
 
-    /** O'quvchining davomati. */
+    /** O'quvchining davomati (keldi/kelmadi). */
     public function attendance(Request $request)
     {
-        $query = $request->user()->attendances()->with('group');
+        $query = $request->user()->attendances()->with('group.course');
 
         if ($groupId = $request->query('group_id')) {
             $query->where('group_id', $groupId);
@@ -33,15 +34,17 @@ class LearningController extends Controller
         return AttendanceResource::collection($query->latest('date')->limit(200)->get());
     }
 
-    /** O'quvchining baholari. */
-    public function grades(Request $request)
+    /** O'quvchiga berilgan uy vazifalari. */
+    public function homework(Request $request)
     {
-        $query = $request->user()->grades()->with('group');
+        $groupIds = $request->user()->groups()->pluck('groups.id');
 
-        if ($groupId = $request->query('group_id')) {
-            $query->where('group_id', $groupId);
-        }
+        $items = Homework::whereIn('group_id', $groupIds)
+            ->with('group.course')
+            ->latest()
+            ->limit(100)
+            ->get();
 
-        return GradeResource::collection($query->latest('date')->limit(200)->get());
+        return HomeworkResource::collection($items);
     }
 }
