@@ -1,0 +1,233 @@
+{
+  "app": { "name": "Camelot LMS", "tagline": "Learning center management system" },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "create": "Create",
+    "back": "Back",
+    "actions": "Actions",
+    "search": "Search",
+    "searchPlaceholder": "Search...",
+    "status": "Status",
+    "total": "Total",
+    "confirm": "Confirm",
+    "all": "All",
+    "none": "None",
+    "close": "Close",
+    "error": "An error occurred",
+    "success": "Success",
+    "required": "Required field",
+    "noData": "No data",
+    "view": "View",
+    "details": "Details",
+    "date": "Date",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "active": "Active",
+    "inactive": "Inactive",
+    "select": "Select",
+    "deleteConfirm": "Are you sure you want to delete?",
+    "saved": "Saved",
+    "optional": "optional"
+  },
+  "auth": {
+    "loginTitle": "Sign in",
+    "loginSubtitle": "Sign in to your account",
+    "email": "Email",
+    "password": "Password",
+    "loginBtn": "Sign in",
+    "logout": "Logout"
+  },
+  "roles": {
+    "admin": "Administrator",
+    "teacher": "Teacher",
+    "student": "Student",
+    "parent": "Parent"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "courses": "Courses",
+    "groups": "Groups",
+    "payments": "Payments",
+    "paymentCards": "Payment cards",
+    "announcements": "Announcements",
+    "myGroups": "My groups",
+    "attendance": "Attendance",
+    "grades": "Grades",
+    "myPayments": "My payments",
+    "children": "My children",
+    "profile": "Profile",
+    "notifications": "Notifications"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "students": "Students",
+    "teachers": "Teachers",
+    "parents": "Parents",
+    "groups": "Groups",
+    "courses": "Courses",
+    "pendingPayments": "Pending payments",
+    "revenue": "Confirmed revenue",
+    "recentPayments": "Recent payments"
+  },
+  "users": {
+    "title": "Users",
+    "add": "Add user",
+    "edit": "Edit user",
+    "role": "Role",
+    "language": "Language",
+    "password": "Password",
+    "passwordEditHint": "Leave empty to keep the current password",
+    "children": "Children (students)",
+    "groups": "Groups",
+    "filterRole": "By role",
+    "searchPlaceholder": "Name, email or phone..."
+  },
+  "courses": {
+    "title": "Courses",
+    "add": "Add course",
+    "edit": "Edit course",
+    "namePerLang": "Name (languages)",
+    "descPerLang": "Description (languages)",
+    "type": "Type",
+    "typeLanguage": "Language course",
+    "typeSchool": "School subject",
+    "level": "Level",
+    "monthlyFee": "Monthly fee",
+    "groups": "Groups"
+  },
+  "groups": {
+    "title": "Groups",
+    "add": "Add group",
+    "edit": "Edit group",
+    "course": "Course",
+    "teacher": "Teacher",
+    "noTeacher": "Not assigned",
+    "room": "Room",
+    "startsOn": "Start date",
+    "schedule": "Schedule",
+    "students": "Students",
+    "studentsCount": "Students count",
+    "enroll": "Enroll student",
+    "removeStudent": "Remove",
+    "addSlot": "Add time slot",
+    "startTime": "Start",
+    "endTime": "End",
+    "selectStudents": "Select students"
+  },
+  "days": {
+    "mon": "Mon", "tue": "Tue", "wed": "Wed", "thu": "Thu", "fri": "Fri", "sat": "Sat", "sun": "Sun"
+  },
+  "attendance": {
+    "title": "Attendance",
+    "mark": "Mark attendance",
+    "date": "Date",
+    "save": "Save attendance",
+    "saved": "Attendance saved",
+    "noStudents": "No students in this group"
+  },
+  "attendanceStatus": {
+    "present": "Present",
+    "absent": "Absent",
+    "late": "Late",
+    "excused": "Excused"
+  },
+  "grades": {
+    "title": "Grades",
+    "add": "Add grade",
+    "type": "Type",
+    "student": "Student",
+    "score": "Score",
+    "maxScore": "Max score",
+    "percent": "Percent",
+    "comment": "Comment",
+    "titleField": "Title"
+  },
+  "gradeType": {
+    "lesson": "Lesson",
+    "homework": "Homework",
+    "test": "Test",
+    "exam": "Exam"
+  },
+  "payments": {
+    "title": "Payments",
+    "amount": "Amount",
+    "month": "Month",
+    "receipt": "Receipt",
+    "viewReceipt": "View receipt",
+    "confirm": "Confirm",
+    "reject": "Reject",
+    "student": "Student",
+    "card": "Card",
+    "myPayments": "My payments",
+    "history": "Payment history",
+    "newPayment": "New payment",
+    "uploadReceipt": "Upload receipt image",
+    "selectCard": "Which card did you pay to",
+    "submit": "Submit",
+    "noCards": "No payment cards added yet",
+    "payToCards": "Pay to one of the cards below",
+    "filterStatus": "By status"
+  },
+  "paymentStatus": {
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "rejected": "Rejected"
+  },
+  "paymentCards": {
+    "title": "Payment cards",
+    "add": "Add card",
+    "edit": "Edit card",
+    "bankName": "Bank / payment system",
+    "cardNumber": "Card number",
+    "holder": "Card holder",
+    "note": "Note"
+  },
+  "announcements": {
+    "title": "Announcements",
+    "add": "Add announcement",
+    "edit": "Edit announcement",
+    "titlePerLang": "Title (languages)",
+    "bodyPerLang": "Body (languages)",
+    "audience": "Audience",
+    "notify": "Send notification",
+    "feed": "Announcements",
+    "by": "By",
+    "empty": "No announcements yet"
+  },
+  "audience": {
+    "all": "Everyone",
+    "teachers": "Teachers",
+    "students": "Students",
+    "parents": "Parents",
+    "group": "Group"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "empty": "No notifications"
+  },
+  "profile": {
+    "title": "Profile",
+    "language": "Interface language",
+    "changePassword": "Change password",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "telegram": "Telegram chat ID",
+    "telegramHint": "For Telegram notifications",
+    "saved": "Profile saved"
+  },
+  "child": {
+    "groups": "Groups",
+    "attendance": "Attendance",
+    "grades": "Grades",
+    "empty": "No children linked"
+  }
+}

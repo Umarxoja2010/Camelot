@@ -1,0 +1,233 @@
+{
+  "app": { "name": "Camelot LMS", "tagline": "Система управления учебным центром" },
+  "common": {
+    "loading": "Загрузка...",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Изменить",
+    "add": "Добавить",
+    "create": "Создать",
+    "back": "Назад",
+    "actions": "Действия",
+    "search": "Поиск",
+    "searchPlaceholder": "Поиск...",
+    "status": "Статус",
+    "total": "Всего",
+    "confirm": "Подтвердить",
+    "all": "Все",
+    "none": "Нет",
+    "close": "Закрыть",
+    "error": "Произошла ошибка",
+    "success": "Успешно",
+    "required": "Обязательное поле",
+    "noData": "Нет данных",
+    "view": "Просмотр",
+    "details": "Подробнее",
+    "date": "Дата",
+    "name": "Имя",
+    "phone": "Телефон",
+    "email": "Email",
+    "active": "Активен",
+    "inactive": "Неактивен",
+    "select": "Выберите",
+    "deleteConfirm": "Вы действительно хотите удалить?",
+    "saved": "Сохранено",
+    "optional": "необязательно"
+  },
+  "auth": {
+    "loginTitle": "Вход в систему",
+    "loginSubtitle": "Войдите в свой аккаунт",
+    "email": "Email",
+    "password": "Пароль",
+    "loginBtn": "Войти",
+    "logout": "Выйти"
+  },
+  "roles": {
+    "admin": "Администратор",
+    "teacher": "Преподаватель",
+    "student": "Ученик",
+    "parent": "Родитель"
+  },
+  "nav": {
+    "dashboard": "Статистика",
+    "users": "Пользователи",
+    "courses": "Курсы",
+    "groups": "Группы",
+    "payments": "Платежи",
+    "paymentCards": "Платёжные карты",
+    "announcements": "Объявления",
+    "myGroups": "Мои группы",
+    "attendance": "Посещаемость",
+    "grades": "Оценки",
+    "myPayments": "Мои платежи",
+    "children": "Мои дети",
+    "profile": "Профиль",
+    "notifications": "Уведомления"
+  },
+  "dashboard": {
+    "title": "Статистика",
+    "students": "Ученики",
+    "teachers": "Преподаватели",
+    "parents": "Родители",
+    "groups": "Группы",
+    "courses": "Курсы",
+    "pendingPayments": "Ожидающие платежи",
+    "revenue": "Подтверждённый доход",
+    "recentPayments": "Последние платежи"
+  },
+  "users": {
+    "title": "Пользователи",
+    "add": "Добавить пользователя",
+    "edit": "Изменить пользователя",
+    "role": "Роль",
+    "language": "Язык",
+    "password": "Пароль",
+    "passwordEditHint": "Оставьте пустым, чтобы не менять пароль",
+    "children": "Дети (ученики)",
+    "groups": "Группы",
+    "filterRole": "По роли",
+    "searchPlaceholder": "Имя, email или телефон..."
+  },
+  "courses": {
+    "title": "Курсы",
+    "add": "Добавить курс",
+    "edit": "Изменить курс",
+    "namePerLang": "Название (языки)",
+    "descPerLang": "Описание (языки)",
+    "type": "Тип",
+    "typeLanguage": "Языковой курс",
+    "typeSchool": "Школьный предмет",
+    "level": "Уровень",
+    "monthlyFee": "Ежемесячная оплата",
+    "groups": "Группы"
+  },
+  "groups": {
+    "title": "Группы",
+    "add": "Добавить группу",
+    "edit": "Изменить группу",
+    "course": "Курс",
+    "teacher": "Преподаватель",
+    "noTeacher": "Не назначен",
+    "room": "Кабинет",
+    "startsOn": "Дата начала",
+    "schedule": "Расписание",
+    "students": "Ученики",
+    "studentsCount": "Кол-во учеников",
+    "enroll": "Записать ученика",
+    "removeStudent": "Исключить",
+    "addSlot": "Добавить время",
+    "startTime": "Начало",
+    "endTime": "Конец",
+    "selectStudents": "Выберите учеников"
+  },
+  "days": {
+    "mon": "Пн", "tue": "Вт", "wed": "Ср", "thu": "Чт", "fri": "Пт", "sat": "Сб", "sun": "Вс"
+  },
+  "attendance": {
+    "title": "Посещаемость",
+    "mark": "Отметить посещаемость",
+    "date": "Дата",
+    "save": "Сохранить посещаемость",
+    "saved": "Посещаемость сохранена",
+    "noStudents": "В группе нет учеников"
+  },
+  "attendanceStatus": {
+    "present": "Присутствовал",
+    "absent": "Отсутствовал",
+    "late": "Опоздал",
+    "excused": "Уважительная"
+  },
+  "grades": {
+    "title": "Оценки",
+    "add": "Поставить оценку",
+    "type": "Тип",
+    "student": "Ученик",
+    "score": "Балл",
+    "maxScore": "Макс. балл",
+    "percent": "Процент",
+    "comment": "Комментарий",
+    "titleField": "Заголовок"
+  },
+  "gradeType": {
+    "lesson": "Урок",
+    "homework": "Домашнее задание",
+    "test": "Тест",
+    "exam": "Экзамен"
+  },
+  "payments": {
+    "title": "Платежи",
+    "amount": "Сумма",
+    "month": "Месяц",
+    "receipt": "Чек",
+    "viewReceipt": "Посмотреть чек",
+    "confirm": "Подтвердить",
+    "reject": "Отклонить",
+    "student": "Ученик",
+    "card": "Карта",
+    "myPayments": "Мои платежи",
+    "history": "История платежей",
+    "newPayment": "Новый платёж",
+    "uploadReceipt": "Загрузить чек",
+    "selectCard": "На какую карту оплатили",
+    "submit": "Отправить",
+    "noCards": "Платёжные карты пока не добавлены",
+    "payToCards": "Оплатите на одну из карт",
+    "filterStatus": "По статусу"
+  },
+  "paymentStatus": {
+    "pending": "Ожидает",
+    "confirmed": "Подтверждён",
+    "rejected": "Отклонён"
+  },
+  "paymentCards": {
+    "title": "Платёжные карты",
+    "add": "Добавить карту",
+    "edit": "Изменить карту",
+    "bankName": "Банк / платёжная система",
+    "cardNumber": "Номер карты",
+    "holder": "Владелец карты",
+    "note": "Заметка"
+  },
+  "announcements": {
+    "title": "Объявления",
+    "add": "Добавить объявление",
+    "edit": "Изменить объявление",
+    "titlePerLang": "Заголовок (языки)",
+    "bodyPerLang": "Текст (языки)",
+    "audience": "Кому",
+    "notify": "Отправить уведомление",
+    "feed": "Объявления",
+    "by": "Автор",
+    "empty": "Объявлений пока нет"
+  },
+  "audience": {
+    "all": "Всем",
+    "teachers": "Преподавателям",
+    "students": "Ученикам",
+    "parents": "Родителям",
+    "group": "Группе"
+  },
+  "notifications": {
+    "title": "Уведомления",
+    "markAllRead": "Отметить все прочитанными",
+    "empty": "Нет уведомлений"
+  },
+  "profile": {
+    "title": "Профиль",
+    "language": "Язык интерфейса",
+    "changePassword": "Сменить пароль",
+    "currentPassword": "Текущий пароль",
+    "newPassword": "Новый пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "telegram": "Telegram chat ID",
+    "telegramHint": "Для уведомлений в Telegram",
+    "saved": "Профиль сохранён"
+  },
+  "child": {
+    "groups": "Группы",
+    "attendance": "Посещаемость",
+    "grades": "Оценки",
+    "empty": "Дети не привязаны"
+  }
+}

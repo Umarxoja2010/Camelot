@@ -1,0 +1,233 @@
+{
+  "app": { "name": "Camelot LMS", "tagline": "O'quv markaz boshqaruv tizimi" },
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "delete": "O'chirish",
+    "edit": "Tahrirlash",
+    "add": "Qo'shish",
+    "create": "Yaratish",
+    "back": "Orqaga",
+    "actions": "Amallar",
+    "search": "Qidirish",
+    "searchPlaceholder": "Qidirish...",
+    "status": "Holati",
+    "total": "Jami",
+    "confirm": "Tasdiqlash",
+    "all": "Barchasi",
+    "none": "Yo'q",
+    "close": "Yopish",
+    "error": "Xatolik yuz berdi",
+    "success": "Muvaffaqiyatli",
+    "required": "Majburiy maydon",
+    "noData": "Ma'lumot yo'q",
+    "view": "Ko'rish",
+    "details": "Batafsil",
+    "date": "Sana",
+    "name": "Ism",
+    "phone": "Telefon",
+    "email": "Email",
+    "active": "Faol",
+    "inactive": "Faol emas",
+    "select": "Tanlang",
+    "deleteConfirm": "Rostdan ham o'chirmoqchimisiz?",
+    "saved": "Saqlandi",
+    "optional": "ixtiyoriy"
+  },
+  "auth": {
+    "loginTitle": "Tizimga kirish",
+    "loginSubtitle": "Hisobingiz bilan kiring",
+    "email": "Email",
+    "password": "Parol",
+    "loginBtn": "Kirish",
+    "logout": "Chiqish"
+  },
+  "roles": {
+    "admin": "Administrator",
+    "teacher": "O'qituvchi",
+    "student": "O'quvchi",
+    "parent": "Ota-ona"
+  },
+  "nav": {
+    "dashboard": "Statistika",
+    "users": "Foydalanuvchilar",
+    "courses": "Kurslar",
+    "groups": "Guruhlar",
+    "payments": "To'lovlar",
+    "paymentCards": "To'lov kartalari",
+    "announcements": "E'lonlar",
+    "myGroups": "Guruhlarim",
+    "attendance": "Davomat",
+    "grades": "Baholar",
+    "myPayments": "To'lovlarim",
+    "children": "Farzandlarim",
+    "profile": "Profil",
+    "notifications": "Bildirishnomalar"
+  },
+  "dashboard": {
+    "title": "Statistika",
+    "students": "O'quvchilar",
+    "teachers": "O'qituvchilar",
+    "parents": "Ota-onalar",
+    "groups": "Guruhlar",
+    "courses": "Kurslar",
+    "pendingPayments": "Kutilayotgan to'lovlar",
+    "revenue": "Tasdiqlangan daromad",
+    "recentPayments": "So'nggi to'lovlar"
+  },
+  "users": {
+    "title": "Foydalanuvchilar",
+    "add": "Foydalanuvchi qo'shish",
+    "edit": "Foydalanuvchini tahrirlash",
+    "role": "Rol",
+    "language": "Til",
+    "password": "Parol",
+    "passwordEditHint": "Bo'sh qoldirsangiz, parol o'zgarmaydi",
+    "children": "Farzandlari (o'quvchilar)",
+    "groups": "Guruhlari",
+    "filterRole": "Rol bo'yicha",
+    "searchPlaceholder": "Ism, email yoki telefon..."
+  },
+  "courses": {
+    "title": "Kurslar",
+    "add": "Kurs qo'shish",
+    "edit": "Kursni tahrirlash",
+    "namePerLang": "Nomi (tillar)",
+    "descPerLang": "Tavsif (tillar)",
+    "type": "Turi",
+    "typeLanguage": "Til kursi",
+    "typeSchool": "Maktab fani",
+    "level": "Daraja",
+    "monthlyFee": "Oylik to'lov",
+    "groups": "Guruhlar"
+  },
+  "groups": {
+    "title": "Guruhlar",
+    "add": "Guruh qo'shish",
+    "edit": "Guruhni tahrirlash",
+    "course": "Kurs",
+    "teacher": "O'qituvchi",
+    "noTeacher": "Biriktirilmagan",
+    "room": "Xona",
+    "startsOn": "Boshlanish sanasi",
+    "schedule": "Dars jadvali",
+    "students": "O'quvchilar",
+    "studentsCount": "O'quvchilar soni",
+    "enroll": "O'quvchi yozish",
+    "removeStudent": "Chiqarish",
+    "addSlot": "Vaqt qo'shish",
+    "startTime": "Boshlanish",
+    "endTime": "Tugash",
+    "selectStudents": "O'quvchilarni tanlang"
+  },
+  "days": {
+    "mon": "Dush", "tue": "Sesh", "wed": "Chor", "thu": "Pay", "fri": "Jum", "sat": "Shan", "sun": "Yak"
+  },
+  "attendance": {
+    "title": "Davomat",
+    "mark": "Davomat belgilash",
+    "date": "Sana",
+    "save": "Davomatni saqlash",
+    "saved": "Davomat saqlandi",
+    "noStudents": "Guruhda o'quvchilar yo'q"
+  },
+  "attendanceStatus": {
+    "present": "Keldi",
+    "absent": "Kelmadi",
+    "late": "Kechikdi",
+    "excused": "Sababli"
+  },
+  "grades": {
+    "title": "Baholar",
+    "add": "Baho qo'yish",
+    "type": "Turi",
+    "student": "O'quvchi",
+    "score": "Ball",
+    "maxScore": "Maksimal ball",
+    "percent": "Foiz",
+    "comment": "Izoh",
+    "titleField": "Sarlavha"
+  },
+  "gradeType": {
+    "lesson": "Dars",
+    "homework": "Uy vazifasi",
+    "test": "Test",
+    "exam": "Imtihon"
+  },
+  "payments": {
+    "title": "To'lovlar",
+    "amount": "Summa",
+    "month": "Oy",
+    "receipt": "Chek",
+    "viewReceipt": "Chekni ko'rish",
+    "confirm": "Tasdiqlash",
+    "reject": "Rad etish",
+    "student": "O'quvchi",
+    "card": "Karta",
+    "myPayments": "To'lovlarim",
+    "history": "To'lovlar tarixi",
+    "newPayment": "Yangi to'lov",
+    "uploadReceipt": "Chek rasmini yuklash",
+    "selectCard": "Qaysi kartaga to'ladingiz",
+    "submit": "Yuborish",
+    "noCards": "Hozircha to'lov kartasi qo'shilmagan",
+    "payToCards": "Quyidagi kartalardan biriga to'lang",
+    "filterStatus": "Holat bo'yicha"
+  },
+  "paymentStatus": {
+    "pending": "Kutilmoqda",
+    "confirmed": "Tasdiqlangan",
+    "rejected": "Rad etilgan"
+  },
+  "paymentCards": {
+    "title": "To'lov kartalari",
+    "add": "Karta qo'shish",
+    "edit": "Kartani tahrirlash",
+    "bankName": "Bank / to'lov tizimi",
+    "cardNumber": "Karta raqami",
+    "holder": "Karta egasi",
+    "note": "Izoh"
+  },
+  "announcements": {
+    "title": "E'lonlar",
+    "add": "E'lon qo'shish",
+    "edit": "E'lonni tahrirlash",
+    "titlePerLang": "Sarlavha (tillar)",
+    "bodyPerLang": "Matn (tillar)",
+    "audience": "Kimga",
+    "notify": "Bildirishnoma yuborilsin",
+    "feed": "E'lonlar",
+    "by": "Muallif",
+    "empty": "Hozircha e'lonlar yo'q"
+  },
+  "audience": {
+    "all": "Hammaga",
+    "teachers": "O'qituvchilarga",
+    "students": "O'quvchilarga",
+    "parents": "Ota-onalarga",
+    "group": "Guruhga"
+  },
+  "notifications": {
+    "title": "Bildirishnomalar",
+    "markAllRead": "Hammasini o'qilgan deb belgilash",
+    "empty": "Bildirishnomalar yo'q"
+  },
+  "profile": {
+    "title": "Profil",
+    "language": "Interfeys tili",
+    "changePassword": "Parolni o'zgartirish",
+    "currentPassword": "Joriy parol",
+    "newPassword": "Yangi parol",
+    "confirmPassword": "Parolni tasdiqlang",
+    "telegram": "Telegram chat ID",
+    "telegramHint": "Telegram bildirishnomalari uchun",
+    "saved": "Profil saqlandi"
+  },
+  "child": {
+    "groups": "Guruhlar",
+    "attendance": "Davomat",
+    "grades": "Baholar",
+    "empty": "Farzandlar biriktirilmagan"
+  }
+}

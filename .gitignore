@@ -1,0 +1,13 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Bog'liqliklar (har bir subprojektda o'z .gitignore'i ham bor)
+**/node_modules/
+**/vendor/
+
+# Build natijalari
+**/dist/
